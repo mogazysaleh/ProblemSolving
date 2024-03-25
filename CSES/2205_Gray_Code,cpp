@@ -1,0 +1,33 @@
+//https://cses.fi/problemset/task/2205
+
+#include <bits/stdc++.h>
+using namespace std;
+#define FIO ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define ull unsigned long long
+#define ll long long
+#define ln '\n'
+
+
+string get_gray(int a, int n)
+{
+    string s = "";
+    a = (a ^ (a >> 1));
+    while(a)
+    {
+        s.push_back((char)((a&1)+(int)'0'));
+        a >>= 1;
+    }
+    while(n - s.size())
+        s.push_back('0');
+    std::reverse(s.begin(), s.end());
+    return s;
+}
+
+int main()
+{
+    FIO
+    int n; cin >> n;
+    int lim = pow(2, n);
+    for (int i = 0; i < lim; ++i)
+        cout << get_gray(i, n) << ln;
+}
